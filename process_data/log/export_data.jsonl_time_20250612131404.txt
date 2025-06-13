@@ -1,0 +1,159 @@
+2025-06-12 13:14:05.002 | WARNING  | data_juicer.config.config:init_setup_from_cfg:376 - Set dataset cache directory to /mnt/datajucier_cache/huggingface/datasets using the ds_cache_dir argument, which is /root/.cache/huggingface/datasets before based on the env variable HF_DATASETS_CACHE.
+2025-06-12 13:14:05.003 | INFO     | data_juicer.config.config:config_backup:519 - Back up the input config file [/workspace/xuel/merge_process.yaml] into the work_dir [/workspace/xuel/process_data]
+2025-06-12 13:14:05.013 | INFO     | data_juicer.config.config:display_config:540 - Configuration table: 
+╒════════════════════════╤════════════════════════════════════════════════════════════════════════╕
+│ key                    │ values                                                                 │
+╞════════════════════════╪════════════════════════════════════════════════════════════════════════╡
+│ config                 │ [Path_fr(merge_process.yaml, cwd=/workspace/xuel)]                     │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ hpo_config             │ None                                                                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ path_3sigma_recipe     │ None                                                                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ project_name           │ 'baike-process'                                                        │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ executor_type          │ 'default'                                                              │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ dataset_path           │ '/workspace/xuel/merge_data'                                           │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ export_path            │ '/workspace/xuel/process_data/data.jsonl'                              │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ export_shard_size      │ 0                                                                      │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ export_in_parallel     │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ keep_stats_in_res_ds   │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ keep_hashes_in_res_ds  │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ np                     │ 4                                                                      │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ text_keys              │ 'text'                                                                 │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ image_key              │ 'images'                                                               │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ image_special_token    │ '<__dj__image>'                                                        │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ audio_key              │ 'audios'                                                               │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ audio_special_token    │ '<__dj__audio>'                                                        │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ eoc_special_token      │ '<|__dj__eoc|>'                                                        │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ suffixes               │ []                                                                     │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ use_cache              │ True                                                                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ ds_cache_dir           │ '/mnt/datajucier_cache/huggingface/datasets'                           │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ cache_compress         │ None                                                                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ use_checkpoint         │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ temp_dir               │ None                                                                   │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ open_tracer            │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ op_list_to_trace       │ []                                                                     │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ trace_num              │ 10                                                                     │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ op_fusion              │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ process                │ [{'chinese_convert_mapper': {'audio_key': 'audios',                    │
+│                        │                              'image_key': 'images',                    │
+│                        │                              'mode': 't2s',                            │
+│                        │                              'text_key': 'text'}},                     │
+│                        │  {'remove_non_chinese_character_mapper': {'audio_key': 'audios',       │
+│                        │                                           'image_key': 'images',       │
+│                        │                                           'keep_alphabet': True,       │
+│                        │                                           'keep_number': True,         │
+│                        │                                           'keep_punc': True,           │
+│                        │                                           'text_key': 'text'}},        │
+│                        │  {'remove_repeat_sentences_mapper': {'audio_key': 'audios',            │
+│                        │                                      'ignore_special_character': True, │
+│                        │                                      'image_key': 'images',            │
+│                        │                                      'lowercase': False,               │
+│                        │                                      'min_repeat_sentence_length': 2,  │
+│                        │                                      'text_key': 'text'}},             │
+│                        │  {'remove_specific_chars_mapper': {'audio_key': 'audios',              │
+│                        │                                    'chars_to_remove': '◆●■►▼▲▴∆▻▷❖♡□', │
+│                        │                                    'image_key': 'images',              │
+│                        │                                    'text_key': 'text'}},               │
+│                        │  {'remove_table_text_mapper': {'audio_key': 'audios',                  │
+│                        │                                'image_key': 'images',                  │
+│                        │                                'max_col': 20,                          │
+│                        │                                'min_col': 2,                           │
+│                        │                                'text_key': 'text'}},                   │
+│                        │  {'clean_html_mapper': {'audio_key': 'audios',                         │
+│                        │                         'image_key': 'images',                         │
+│                        │                         'text_key': 'text'}},                          │
+│                        │  {'clean_links_mapper': {'audio_key': 'audios',                        │
+│                        │                          'image_key': 'images',                        │
+│                        │                          'pattern': None,                              │
+│                        │                          'repl': '',                                   │
+│                        │                          'text_key': 'text'}},                         │
+│                        │  {'special_characters_filter': {'audio_key': 'audios',                 │
+│                        │                                 'image_key': 'images',                 │
+│                        │                                 'max_ratio': 0.5,                      │
+│                        │                                 'min_ratio': 0.0,                      │
+│                        │                                 'text_key': 'text'}},                  │
+│                        │  {'text_length_filter': {'audio_key': 'audios',                        │
+│                        │                          'image_key': 'images',                        │
+│                        │                          'max_len': 10000,                             │
+│                        │                          'min_len': 0,                                 │
+│                        │                          'text_key': 'text'}}]                         │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ save_stats_in_one_file │ False                                                                  │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ ray_address            │ 'auto'                                                                 │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ work_dir               │ '/workspace/xuel/process_data'                                         │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ timestamp              │ '20250612131404'                                                       │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ dataset_dir            │ '/workspace/xuel/merge_data'                                           │
+├────────────────────────┼────────────────────────────────────────────────────────────────────────┤
+│ add_suffix             │ False                                                                  │
+╘════════════════════════╧════════════════════════════════════════════════════════════════════════╛
+2025-06-12 13:14:05.015 | INFO     | data_juicer.core.executor:__init__:41 - Using cache compression method: [None]
+2025-06-12 13:14:05.015 | INFO     | data_juicer.core.executor:__init__:46 - Setting up data formatter...
+2025-06-12 13:14:05.016 | INFO     | data_juicer.core.executor:__init__:68 - Preparing exporter...
+2025-06-12 13:14:05.016 | INFO     | data_juicer.core.executor:run:99 - Loading dataset from data formatter...
+2025-06-12 13:14:10.917 | INFO     | logging:handle:954 - Found cached dataset json (/mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e)
+  0%|          | 0/1 [00:00<?, ?it/s]100%|##########| 1/1 [00:00<00:00, 362.99it/s]
+2025-06-12 13:14:10.926 | INFO     | data_juicer.format.formatter:unify_format:185 - Unifying the input dataset formats...
+2025-06-12 13:14:10.926 | INFO     | data_juicer.format.formatter:unify_format:200 - There are 368 sample(s) in the original dataset.
+2025-06-12 13:14:10.941 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-daa061e2f847c9fa_*_of_00004.arrow
+2025-06-12 13:14:10.944 | INFO     | data_juicer.format.formatter:unify_format:214 - 368 samples left after filtering empty text.
+2025-06-12 13:14:10.944 | INFO     | data_juicer.format.mixture_formatter:load_dataset:136 - sampled 368 from 368
+2025-06-12 13:14:10.946 | INFO     | data_juicer.format.mixture_formatter:load_dataset:142 - There are 368 in final dataset
+2025-06-12 13:14:10.947 | INFO     | data_juicer.core.executor:run:105 - Preparing process operators...
+2025-06-12 13:14:10.950 | INFO     | data_juicer.core.executor:run:112 - Processing data...
+2025-06-12 13:14:10.962 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-d167111d6368412a_*_of_00004.arrow
+2025-06-12 13:14:10.964 | INFO     | data_juicer.core.executor:run:188 - Op [chinese_convert_mapper] Done in 0.014(s). Left 368 samples.
+2025-06-12 13:14:10.985 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-581e2fe66cd09e66_*_of_00004.arrow
+2025-06-12 13:14:10.990 | INFO     | data_juicer.core.executor:run:188 - Op [remove_non_chinese_character_mapper] Done in 0.026(s). Left 368 samples.
+2025-06-12 13:14:11.001 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-2a549e687b961033_*_of_00004.arrow
+2025-06-12 13:14:11.003 | INFO     | data_juicer.core.executor:run:188 - Op [remove_repeat_sentences_mapper] Done in 0.013(s). Left 368 samples.
+2025-06-12 13:14:11.015 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-73c46eaadf9ca7e1_*_of_00004.arrow
+2025-06-12 13:14:11.019 | INFO     | data_juicer.core.executor:run:188 - Op [remove_specific_chars_mapper] Done in 0.016(s). Left 368 samples.
+2025-06-12 13:14:11.029 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-221f1ed19f14babc_*_of_00004.arrow
+2025-06-12 13:14:11.031 | INFO     | data_juicer.core.executor:run:188 - Op [remove_table_text_mapper] Done in 0.012(s). Left 368 samples.
+2025-06-12 13:14:11.039 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-78ea900c1b954bd3_*_of_00004.arrow
+2025-06-12 13:14:11.041 | INFO     | data_juicer.core.executor:run:188 - Op [clean_html_mapper] Done in 0.010(s). Left 368 samples.
+2025-06-12 13:14:11.055 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-5cf123ebb87c96a3_*_of_00004.arrow
+2025-06-12 13:14:11.057 | INFO     | data_juicer.core.executor:run:188 - Op [clean_links_mapper] Done in 0.016(s). Left 368 samples.
+2025-06-12 13:14:11.068 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-1a55e432fd781781_*_of_00004.arrow
+2025-06-12 13:14:11.084 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-0b3f0e1c71d4bb5e_*_of_00004.arrow
+2025-06-12 13:14:11.094 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-02d6399a64d93b0f_*_of_00004.arrow
+2025-06-12 13:14:11.096 | INFO     | data_juicer.core.executor:run:188 - Op [special_characters_filter] Done in 0.039(s). Left 238 samples.
+2025-06-12 13:14:11.109 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-7df6c2c80a17d95e_*_of_00004.arrow
+2025-06-12 13:14:11.123 | INFO     | logging:handle:954 - Loading cached processed dataset at /mnt/datajucier_cache/huggingface/datasets/json/default-4e231b66822020a0/0.0.0/fe5dd6ea2639a6df622901539cb550cf8797e5a6b2dd7af1cf934bed8e233e6e/cache-76ab211a8c00b133_*_of_00004.arrow
+2025-06-12 13:14:11.126 | INFO     | data_juicer.core.executor:run:188 - Op [text_length_filter] Done in 0.030(s). Left 140 samples.
+2025-06-12 13:14:11.126 | INFO     | data_juicer.core.executor:run:192 - All Ops are done in 0.176(s).
+2025-06-12 13:14:11.127 | INFO     | data_juicer.core.executor:run:195 - Exporting dataset to disk...
+2025-06-12 13:14:11.127 | INFO     | data_juicer.core.exporter:_export_impl:111 - Exporting computed stats into a single file...
+Creating json from Arrow format:   0%|          | 0/1 [00:00<?, ?ba/s]Creating json from Arrow format: 100%|##########| 1/1 [00:00<00:00, 109.96ba/s]
+2025-06-12 13:14:11.145 | INFO     | data_juicer.core.exporter:_export_impl:137 - Export dataset into a single file...
+Creating json from Arrow format:   0%|          | 0/1 [00:00<?, ?ba/s]Creating json from Arrow format: 100%|##########| 1/1 [00:00<00:00, 159.33ba/s]

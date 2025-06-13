@@ -1,0 +1,47 @@
+# global parameters
+project_name: 'book_process'
+dataset_path: '/mnt/raw_data/books-3-textbooks'  # path to your dataset directory or file
+export_path: '/mnt/outputs/books-3-textbooks/data.jsonl'
+
+np: 50  # number of subprocess to process your dataset
+open_tracer: true
+use_cache: true                                             # whether to use the cache management of Hugging Face datasets. It might take up lots of disk space when using cache
+ds_cache_dir: '/mnt/datajucier_cache/huggingface/datasets'                                          # cache dir for Hugging Face datasets. In default, it\'s the same as the environment variable `HF_DATASETS_CACHE`, whose default value is usually "~/.cache/huggingface/datasets". If this argument is set to a valid path by users, it will override the default cache dir
+
+# text_keys: 'category'  
+# text_keys: 'title'  
+# text_keys: 'desc'  
+# text_keys: 'answer'  
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - chinese_convert_mapper:               # 繁简转换
+      mode: 't2s'
+  - remove_non_chinese_character_mapper: # 移除非中文字符（保留字母、数字、标点）
+      keep_alphabet: true
+      keep_number: true
+      keep_punc: true
+  - remove_repeat_sentences_mapper:      # 去除重复句子
+      min_repeat_sentence_length: 2
+      ignore_special_character: true
+  - remove_specific_chars_mapper:        # 清理特定符号
+      chars_to_remove: '◆●■►▼▲▴∆▻▷❖♡□'
+  - remove_table_text_mapper:            # 删除表格文本
+      min_col: 2
+      max_col: 20
+  - clean_html_mapper: {}                # 去除HTML标签
+  - clean_links_mapper: {}               # 去除链接
+  - maximum_line_length_filter:                             # filter text with the maximum length of lines out of specific range
+    min_len: 10                                             # the min length of filter range
+    max_len: 10000                                          # the max length of filter range
+  - perplexity_filter:                   # 中文困惑度过滤（慎用或调高阈值）
+      lang: 'zh'
+      max_ppl: 1500
+  - special_characters_filter:           # 放宽特殊字符比例
+      min_ratio: 0.0
+      max_ratio: 0.5
+  - text_length_filter:                  # 降低文本长度限制
+      min_len: 0
+      max_len: 131072                    # whether to ignore sub-strings with specific pattern when computing simhash.
+  

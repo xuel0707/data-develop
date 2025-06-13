@@ -1,0 +1,38 @@
+# global parameters
+project_name: 'stackexchange_process'
+dataset_path: '/mnt/raw_data/stackexchange'  # path to your dataset directory or file
+export_path: '/mnt/outputs/stackexchange/data.jsonl'
+
+np: 50  # number of subprocess to process your dataset
+open_tracer: true
+
+# process schedule
+# a list of several process operators with their arguments
+process:
+  - clean_email_mapper:
+  - clean_links_mapper:
+  - fix_unicode_mapper:
+  - punctuation_normalization_mapper:
+  - whitespace_normalization_mapper:
+
+
+  - maximum_line_length_filter:  # for code
+      min_len: 80
+  - perplexity_filter:
+      lang: en
+      max_ppl: 10000  # >3sigma
+  - special_characters_filter:
+      min_ratio: 0.232 # 3sigma
+      max_ratio: 0.7  # >3sigma
+  - text_length_filter:
+      min_len: 200
+  - words_num_filter:
+      lang: en
+      tokenization: true
+      min_num: 100
+  - word_repetition_filter:
+      lang: en
+      tokenization: true
+      rep_len: 10
+      max_ratio: 0.8 # >3sigma
+
